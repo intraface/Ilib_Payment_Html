@@ -40,7 +40,7 @@ class Ilib_Payment_Html_Prepare
     /**
      * @var array $optional_values
      */
-    protected $optional_values;    
+    protected $optional_values;
     
     /**
      * Contructor
@@ -167,6 +167,16 @@ class Ilib_Payment_Html_Prepare
         }
         
         return false;
+    }
+    
+    /**
+     * Returns the name of the provider. Needs to be overridden in extends.
+     * 
+     * @return string name of provider
+     */
+    public function getProviderName()
+    {
+        return NULL;
     }
     
     /**
