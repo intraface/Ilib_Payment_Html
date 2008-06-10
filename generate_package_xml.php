@@ -12,8 +12,8 @@
 require_once 'PEAR/PackageFileManager2.php';
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
 
-$version = '0.0.1';
-$notes = '* initial package release';
+$version = '0.1.0';
+$notes = '* updated interface to be more generalized';
 $stability = 'alpha';
 
 $pfm = new PEAR_PackageFileManager2();
