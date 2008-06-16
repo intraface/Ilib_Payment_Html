@@ -1,5 +1,7 @@
 <?php
 require_once 'PHPUnit/Framework.php';
+require_once 'Ilib/ClassLoader.php';
+
 
 PHPUnit_Util_Filter::addDirectoryToWhitelist(realpath(dirname(__FILE__) . '/../src/'));
 
