@@ -78,7 +78,7 @@ class Ilib_Payment_Html
         $file_name = 'Ilib/Payment/Html/Provider/'.$this->provider.'/PaymentProcess.php';
         @include_once $file_name;
         if(class_exists($class_name)) {
-            return new $class_name;
+            return new $class_name($this->verification_key);
         }
         else {
             return false;
