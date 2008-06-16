@@ -3,9 +3,8 @@ require_once 'PHPUnit/Framework.php';
 require_once 'k/controller.php';
 
 PHPUnit_Util_Filter::addDirectoryToWhitelist(realpath(dirname(__FILE__) . '/../src/'));
-
-
-
+PHPUnit_Util_Filter::removeDirectoryFromWhitelist(realpath(dirname(__FILE__) . '/../src/Ilib/Payment/Html/Controller/'));
+PHPUnit_Util_Filter::removeDirectoryFromWhitelist(realpath(dirname(__FILE__) . '/../src/Ilib/Payment/Html/templates/'));
 
 class PrepareTest extends PHPUnit_Framework_TestCase
 {
