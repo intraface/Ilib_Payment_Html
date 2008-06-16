@@ -136,7 +136,7 @@ class Ilib_Payment_Html_Prepare
         $validator->isString($inputpage, 'error in ok page', '', 'allow_empty');
         
         if($error->isError()) {
-            throw new Exception('Error in prepare payment', implode(', ', $error->getMessage()));
+            throw new Exception('Error in prepare payment '.implode(', ', $error->getMessage()));
         }
         
         return true;    
@@ -185,7 +185,6 @@ class Ilib_Payment_Html_Prepare
      * @input string $data
      * @return string formattet data
      */
-
     protected function safeToHtml($data) {
         if (get_magic_quotes_gpc()) {
             $data = stripslashes($data);

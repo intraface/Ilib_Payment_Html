@@ -12,34 +12,77 @@
 class Ilib_Payment_Html 
 {
     
-    /**
-     * Returns the payment object
-     * 
-     * @param string $provider the name of the provider
-     * @return object html payment object
-     */
+    private $provider;
+    private $merchant;
+    private $verification_key;
+    private $session_id;
     
-    static function factory($provider, $action, $merchant, $verification_key, $session_id) {
-        
-        
+    public function __construct($provider, $merchant, $verification_key, $session_id)
+    {
         if(!ereg("^[a-zA-Z0-9]+", $provider)) {
             trigger_error('Invalid provider name!', E_USER_ERROR);
             return false;
         }
         
-        if(!in_array($action, array('prepare', 'postprocess'))) {
-            trigger_error('Invalid action '.$action.', should be either Prepare or Postprocess', E_USER_ERROR);
+        $this->provider = $provider;
+        $this->merchant = $merchant;
+        $this->verification_key = $verification_key;
+        $this->session_id = $session_id;
+    }
+    
+    
+    /**
+     * Returns the prepare object
+     * 
+     * @return object html payment prepare object
+     */
+    public function getPrepare() {
+        
+        require_once 'Ilib/Payment/Html/Provider/'.$this->provider.'/Prepare.php';
+        $class_name = 'Ilib_Payment_Html_Provider_'.$this->provider.'_Prepare'; 
+        return new $class_name($this->merchant, $this->verification_key, $this->session_id);
+        
+    }
+    
+    /**
+     * Returns the post process object
+     * 
+     * @return object html payment prepare object
+     */
+    public function getPostProcess() {
+        
+        require_once 'Ilib/Payment/Html/Provider/'.$this->provider.'/Postprocess.php';
+        $class_name = 'Ilib_Payment_Html_Provider_'.$this->provider.'_Postprocess'; 
+        return new $class_name($this->merchant, $this->verification_key, $this->session_id);
+        
+    }
+    
+    /**
+     * Returns the input object
+     * 
+     * @return object html payment object
+     */
+    public function getInput() {
+        
+        require_once 'Ilib/Payment/Html/Provider/'.$this->provider.'/Input.php';
+        $class_name = 'Ilib_Payment_Html_Provider_'.$this->provider.'_Input'; 
+        return new $class_name;
+        
+    }
+    
+    /**
+     * Returns payment process object
+     */
+    public function getPaymentProcess() {
+        $class_name = 'Ilib_Payment_Html_Provider_'.$this->provider.'_PaymentProcess';
+        $file_name = 'Ilib/Payment/Html/Provider/'.$this->provider.'/PaymentProcess.php';
+        @include_once $file_name;
+        if(class_exists($class_name)) {
+            return new $class_name;
+        }
+        else {
             return false;
         }
-        
-        
-        $file_name = 'Ilib/Payment/Html/Provider/'.$provider.'/'.ucfirst($action).'.php';
-        $class_name = 'Ilib_Payment_Html_Provider_'.$provider.'_'.ucfirst($action); 
-        
-        
-        require_once $file_name;
-        return new $class_name($merchant, $verification_key, $session_id);
-        
     }
     
     

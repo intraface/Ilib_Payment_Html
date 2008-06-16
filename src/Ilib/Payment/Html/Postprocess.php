@@ -31,21 +31,38 @@ class Ilib_Payment_Html_Postprocess
      * @var string session_id the users session id.
      */
     protected $session_id;
+
+    /**
+     * @var double amount
+     */
+    protected $amount;
     
     /**
-     * @var array $values
+     * @var integer $order_number
      */
-    protected $values = array();
+    protected $order_number;
+    
+    /**
+     * @var string $pbs_status
+     */
+    protected $pbs_status;
+    
+    /**
+     * @var integer $transaction_number
+     */
+    protected $transaction_number;
+        
+    /**
+     * @var string $transaction_status
+     */
+    protected $transaction_status;
+
 
     /**
      * @var array $optional_values
      */
     protected $optional_values = array();
 
-    /**
-     * @var array compare values set by
-     */
-    protected $compare_values = array();
         
     /**
      * Contructor
@@ -78,7 +95,7 @@ class Ilib_Payment_Html_Postprocess
      */
     public function getAmount() 
     {
-        return $this->values['amount'];
+        return $this->amount;
     }
     
     /**
@@ -86,7 +103,7 @@ class Ilib_Payment_Html_Postprocess
      */
     public function getOrderNumber() 
     {
-        return $this->values['order_number'];
+        return $this->order_number;
     }
     
     /**
@@ -94,15 +111,24 @@ class Ilib_Payment_Html_Postprocess
      */
     public function getPbsStatus()
     {
-        return $this->values['pbs_status'];
+        return $this->pbs_status;
     }
     
     /**
      * returns the transaction id
      */
-    public function getTransactionId() 
+    public function getTransactionNumber() 
     {
-        return $this->values['transaction_id'];
+        return $this->transaction_number;
+    }
+
+
+    /**
+     * returns the transaction status
+     */
+    public function getTransactionStatus() 
+    {
+        return $this->transaction_status;
     }
     
     /**
