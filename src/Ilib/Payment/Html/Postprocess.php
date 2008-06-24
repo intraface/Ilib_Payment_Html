@@ -85,7 +85,7 @@ class Ilib_Payment_Html_Postprocess
      * 
      * @param array $input input for postprocess
      */
-    public function setPaymentResponse($input) 
+    public function setPaymentResponse($post, $get, $session, $payment_target) 
     {
         return false;
     }

@@ -66,7 +66,7 @@ class Ilib_Payment_Html
         
         require_once 'Ilib/Payment/Html/Provider/'.$this->provider.'/Input.php';
         $class_name = 'Ilib_Payment_Html_Provider_'.$this->provider.'_Input'; 
-        return new $class_name;
+        return new $class_name($this->merchant, $this->verification_key, $this->session_id);
         
     }
     
@@ -84,7 +84,6 @@ class Ilib_Payment_Html
             return false;
         }
     }
-    
     
 }
 
