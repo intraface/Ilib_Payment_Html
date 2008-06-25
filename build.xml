@@ -4,7 +4,7 @@
     <taskdef classname="phing.tasks.ext.IlibPearDeployerTask" name="peardeploy" />
 
     <property name="package-name" value="${phing.project.name}" />
-    <property name="version" value="0.2.1" />
+    <property name="version" value="0.2.3" />
     <property name="stability" value="alpha" />
     <property name="pear.channel" value="public.intraface.dk" />
 
@@ -53,8 +53,10 @@
                 <php minimum_version="5.2.0" />
                 <pear minimum_version="1.6.0" recommended_version="1.6.1" />
                 <package name="konstrukt" channel="public.intraface.dk" recommended_version="0.4.0" minimum_version="0.4.0" />
+                <package name="Ilib_Validator" channel="public.intraface.dk" recommended_version="0.0.2" minimum_version="0.0.2" />
+                <package name="Ilib_Error" channel="public.intraface.dk" recommended_version="0.0.1" minimum_version="0.0.1" />
             </dependencies>
-            <notes>* Minor improvement</notes>
+            <notes>* Added getSecureTunnelUrl Input</notes>
         </d51pearpkg2>
     </target>
 
@@ -63,7 +65,7 @@
         <tar compression="gzip" destfile="${build.dir}/${package-name}-${version}.tgz" basedir="${build.dir}/package" />
     </target>
 
-    <target name="deploy" depends="pear">
+    <target name="deploy" depends="build">
         <property file="./build.properties" />
         <peardeploy uri="${pear.channel.uri}" username="${pear.channel.username}" password="${pear.channel.password}">
             <fileset dir="${build.dir}">

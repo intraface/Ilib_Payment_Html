@@ -45,10 +45,22 @@ class Ilib_Payment_Html_Input
     
     /**
      * Returns a path to a input template matching the provider.
+     * Should be replaced in local classes
      * 
      * @return string template path
      */
     public function getInputTemplatePath() 
+    {
+        return false;
+    }
+    
+    /**
+     * Returns the url to set in front of local urls, to make it secured
+     * Should be replaced in local classes
+     * 
+     * @return string secure tunnel url
+     */
+    public function getSecureTunnelUrl()
     {
         return false;
     }
