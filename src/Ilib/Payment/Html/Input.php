@@ -8,10 +8,8 @@
  * @category Payment
  * @license http://www.gnu.org/licenses/lgpl.html LGPL
  */
-
 class Ilib_Payment_Html_Input
 {
-    
     /**
      * @var string merchant number
      */
@@ -27,7 +25,6 @@ class Ilib_Payment_Html_Input
      */
     protected $session_id;
     
-    
     /**
      * Constructor
      * 
@@ -41,7 +38,6 @@ class Ilib_Payment_Html_Input
         $this->verification_key = $verification_key; 
         $this->session_id = $session_id;
     }
-    
     
     /**
      * Returns a path to a input template matching the provider.
@@ -85,6 +81,3 @@ class Ilib_Payment_Html_Input
         return $this->verification_key;
     }
 }
-
-
-?>

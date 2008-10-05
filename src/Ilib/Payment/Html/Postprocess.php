@@ -8,10 +8,8 @@
  * @category Payment
  * @license http://www.gnu.org/licenses/lgpl.html LGPL
  */
-
 class Ilib_Payment_Html_Postprocess 
-{
-    
+{  
     /**
      * @var string merhcant number
      */
@@ -57,12 +55,10 @@ class Ilib_Payment_Html_Postprocess
      */
     protected $transaction_status;
 
-
     /**
      * @var array $optional_values
      */
     protected $optional_values = array();
-
         
     /**
      * Contructor
@@ -70,7 +66,6 @@ class Ilib_Payment_Html_Postprocess
      * @param string $merchant merchant number
      * @param string $language the language used in the payment
      */
-
     public function __construct($merchant, $verification_key, $session_id)
     {
         $this->merchant = $merchant;
@@ -122,7 +117,6 @@ class Ilib_Payment_Html_Postprocess
         return $this->transaction_number;
     }
 
-
     /**
      * returns the transaction status
      */
@@ -134,11 +128,8 @@ class Ilib_Payment_Html_Postprocess
     /**
      * return optional value
      */
-    public function getOptionalValues() {
+    public function getOptionalValues() 
+    {
         return $this->optional_values;
-    }
-     
+    }    
 }
-
-
-?>

@@ -1,15 +1,6 @@
 <?php
 class Ilib_Payment_Html_Controller_Server extends k_Controller
 {   
-    /*
-    public function __construct($context, $name)
-    {
-        parent::__construct($context, $name);
-        
-        
-    }*/
-    
-    
     public function getPaymentProcess() 
     {
         $server = $this->registry->get('onlinepayment:payment_html')->getPaymentProcess();
@@ -18,7 +9,6 @@ class Ilib_Payment_Html_Controller_Server extends k_Controller
         }
         return $server;
     }
-    
     
     public function POST()
     {
@@ -34,13 +24,11 @@ class Ilib_Payment_Html_Controller_Server extends k_Controller
         throw new k_http_Response(200, $response);
     }
     
-    public function forward($name) {
+    public function forward($name) 
+    {
         if($name == 'process') {
             $next = new Ilib_Payment_Html_Controller_Server_Process($this, $name);
             return $next->handleRequest();
         }
     }
-    
-    
 }
-?>

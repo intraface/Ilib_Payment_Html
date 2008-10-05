@@ -1,7 +1,6 @@
 <?php
 class Ilib_Payment_Html_Controller_Server_Process extends k_Controller
 {   
-    
     public function POST()
     {
         $session =& $this->registry->get('k_http_Session')->get();
@@ -12,7 +11,4 @@ class Ilib_Payment_Html_Controller_Server_Process extends k_Controller
         
         throw new k_http_Redirect($go_to_url);
     }
-    
-    
 }
-?>
