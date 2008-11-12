@@ -54,6 +54,11 @@ class Ilib_Payment_Html_Postprocess
      * @var string $transaction_status
      */
     protected $transaction_status;
+    
+    /**
+     * @var string currency
+     */
+    protected $currency;
 
     /**
      * @var array $optional_values
@@ -119,10 +124,22 @@ class Ilib_Payment_Html_Postprocess
 
     /**
      * returns the transaction status
+     * 
+     * @return string transactions status
      */
     public function getTransactionStatus() 
     {
         return $this->transaction_status;
+    }
+    
+    /**
+     * returns the currency
+     * 
+     * @return string currency
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
     }
     
     /**
